@@ -320,6 +320,22 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="SendMessageButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Height" Value="55"/>
+            <Setter Property="Width" Value="55"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="50" SnapsToDevicePixels="true">
+                            <ContentPresenter Focusable="False" Margin="{TemplateBinding Margin}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -432,6 +448,46 @@
                     </Grid>
                 </Grid>
                 <Custom_Controls:Conversation Grid.Row="1" BorderBrush="#B7B5B8"/>
+                <Grid Grid.Row="2" Background="White">
+                    <Border Background="Transparent" Visibility="{Binding Visibility}" Margin="30,0,30,0">
+                        <Grid>
+                            <Border Background="#F8F6F7" Height="48" CornerRadius="25" HorizontalAlignment="Stretch">
+                                <Grid Height="Auto">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="/assets/attachment.png" Width="25" Stretch="Uniform"/>
+                                    <TextBox Grid.Column="1" x:Name="message" FontSize="16" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"
+                                             TextAlignment="Left" BorderThickness="0" Background="Transparent" Margin="0,0,100,0" Grid.ColumnSpan="2"/>
+                                    <TextBlock Text="Type a message here..." Grid.Column="1" FontWeight="SemiBold" 
+                                       FontSize="16" HorizontalAlignment="Left" TextAlignment="Left"
+                                       VerticalAlignment="Center" Foreground="#B7B5B8" IsHitTestVisible="False">
+
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=message}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,70,0">
+                                <Image Source="/assets/happy.png" Stretch="Uniform" Width="25"/>
+                            </StackPanel>
+                            <Button Style="{StaticResource SendMessageButtonStyle}">
+                                <Button.Content>
+                                    <Image Source="/assets/send.png" Stretch="Uniform" Width="25"/>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
         </Border>
     </Grid>

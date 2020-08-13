@@ -7,7 +7,7 @@
              x:Name="_profileButton"
              mc:Ignorable="d" Height="50" Width="50">
     <UserControl.Resources>
-        <BitmapImage x:Key="DefaultImage" UriSource="/assets/noimage.png"/>
+        <BitmapImage x:Key="DefaultImage" UriSource="/assets/profile1.jpg"/>
 
         <Style x:Key="AvailabilityStyle" TargetType="{x:Type Ellipse}">
             <Setter Property="StrokeThickness" Value="4"/>
