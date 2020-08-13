@@ -426,7 +426,7 @@
                     <TextBlock Grid.Column="1" VerticalAlignment="Center">
                         <Run Text="Калядин Максим" FontWeight="Bold" FontSize="17"/>
                         <LineBreak/>
-                        <Run Text="Offline" FontWeight="ExtraBold" FontSize="19" Foreground="#B7B5B8"/>
+                        <Run Text="Offline" FontWeight="ExtraBold" FontSize="15" Foreground="#B7B5B8"/>
                         <Run Text="     "/>
                         <Run Text="Last seen 3 hour ago" FontSize="14" Foreground="#B7B5B8"/>
                     </TextBlock>
@@ -490,5 +490,34 @@
                 </Grid>
             </Grid>
         </Border>
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="/assets/close.png" Stretch="Uniform" Height="30" HorizontalAlignment="Right" Margin="0,7,22,0"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <Custom_Controls:RoundProfileButton Height="160" Width="160" StrokeBrush="WhiteSmoke"/>
+                <TextBlock Margin="0,18,0,0" TextAlignment="Center" Text="Калядин максим" FontWeight="Bold" FontSize="20"/>
+                <TextBlock Margin="0,6,0,0" TextAlignment="Center" Text="Russia, Ulyanovsk" FontSize="17" Foreground="#b7B5B8"/>
+                <TextBlock Margin="0,18,0,0" TextAlignment="Center">
+                    <Run Text="Типа статус" FontSize="14"/>
+                </TextBlock>
+                <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
+                <TextBlock Margin="30,25,0,0" TextAlignment="Left">
+                    <Run Text="Phone:   " Foreground="#B7B5B8" FontSize="14"/>
+                    <Run Text="+7(967) 774 77 60" FontSize="14"/>
+                </TextBlock>
+                <TextBlock Margin="30,10,0,0" TextAlignment="Left">
+                    <Run Text="E-mail:   " Foreground="#B7B5B8" FontSize="14"/>
+                    <Run Text="kalyadin.maksim@mail.ru" FontSize="14"/>
+                </TextBlock>
+                <TextBlock Margin="30,25,0,0" TextAlignment="Left">
+                    <Run Text="Adress:   " Foreground="#B7B5B8" FontSize="14"/>
+                    <Run Text="b-r Kievski 13/2 42" FontSize="14"/>
+                </TextBlock>
+                <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
