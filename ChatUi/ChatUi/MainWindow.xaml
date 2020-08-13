@@ -1,4 +1,4 @@
-﻿<Window
+﻿<Window xmlns:Custom_Controls="clr-namespace:ChatUi.Custom_Controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -390,6 +390,49 @@
                     </Button>
                 </Grid>
             </Grid>
+            <Custom_Controls:ChatList/>
         </StackPanel>
+        <Border Grid.Column="1" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="160"/>
+                    </Grid.ColumnDefinitions>
+                    <Custom_Controls:RoundProfileButton Grid.Column="0" HorizontalAlignment="Left" Margin="30,0"
+                                                        ProfileImageSource="/assets/profile1.jpg" IsOnline="false"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center">
+                        <Run Text="Калядин Максим" FontWeight="Bold" FontSize="17"/>
+                        <LineBreak/>
+                        <Run Text="Offline" FontWeight="ExtraBold" FontSize="19" Foreground="#B7B5B8"/>
+                        <Run Text="     "/>
+                        <Run Text="Last seen 3 hour ago" FontSize="14" Foreground="#B7B5B8"/>
+                    </TextBlock>
+                    <Grid Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <UniformGrid Columns="3" Margin="24,25,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="48" Width="123" RenderTransformOrigin="0.5,0.5">
+                            <UniformGrid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </UniformGrid.RenderTransform>
+                            <Image Stretch="Uniform"  Source="/assets/more.png" Margin="8,7,-3.2,9" />
+                        </UniformGrid>
+                    </Grid>
+                </Grid>
+                <Custom_Controls:Conversation Grid.Row="1" BorderBrush="#B7B5B8"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

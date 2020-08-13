@@ -56,6 +56,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Custom Controls\Conversation.xaml.cs">
+      <DependentUpon>Conversation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel.cs" />
+    <Page Include="Custom Controls\ChatList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom Controls\Conversation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom Controls\RoundProfileButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +79,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\ChatList.xaml.cs">
+      <DependentUpon>ChatList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\RoundProfileButton.xaml.cs">
+      <DependentUpon>RoundProfileButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -96,13 +118,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Custom Controls\" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\search.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\profile1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\noimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\more.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
