@@ -512,7 +512,7 @@
                     <Run Text="E-mail:   " Foreground="#B7B5B8" FontSize="14"/>
                     <Run Text="kalyadin.maksim@mail.ru" FontSize="14"/>
                 </TextBlock>
-                <TextBlock Margin="30,25,0,0" TextAlignment="Left">
+                <TextBlock Margin="30,10,0,0" TextAlignment="Left">
                     <Run Text="Adress:   " Foreground="#B7B5B8" FontSize="14"/>
                     <Run Text="b-r Kievski 13/2 42" FontSize="14"/>
                 </TextBlock>
