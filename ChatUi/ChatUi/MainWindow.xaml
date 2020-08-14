@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ChatUi"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ChatUi.MainWindow"
         mc:Ignorable="d" x:Name="mainWindow"
-        Title="MainWindow" Height="800" Width="1400" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="800" Width="1400" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -421,8 +421,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="160"/>
                     </Grid.ColumnDefinitions>
-                    <Custom_Controls:RoundProfileButton Grid.Column="0" HorizontalAlignment="Left" Margin="30,0"
-                                                        ProfileImageSource="/assets/profile1.jpg" IsOnline="false"/>
+                    <Custom_Controls:RoundProfileButton Grid.Column="0" HorizontalAlignment="Left" Margin="30,0" IsOnline="false"/>
                     <TextBlock Grid.Column="1" VerticalAlignment="Center">
                         <Run Text="Калядин Максим" FontWeight="Bold" FontSize="17"/>
                         <LineBreak/>

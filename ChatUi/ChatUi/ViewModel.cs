@@ -31,7 +31,7 @@ namespace ChatUi
             {
                 return new List<ConversationMessages>
                 {
-                    new ConversationMessages(){Message="Привет",MessageStatus ="Received", TimeStamp="Yesterday 14:26 PM" },
+                    new ConversationMessages() { Message="Привет",MessageStatus ="Received", TimeStamp="Yesterday 14:26 PM" },
                     new ConversationMessages() { Message="Привет как дела?", MessageStatus="Sent", TimeStamp="Yesterday 14:38 PM"},
                     new ConversationMessages() { Message="Что делаешь?", MessageStatus="Sent", TimeStamp="Today 06:18 AM"}
                 };

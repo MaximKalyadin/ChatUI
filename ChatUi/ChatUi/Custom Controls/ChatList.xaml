@@ -98,7 +98,6 @@
                                             </Grid.ColumnDefinitions>
                                             <Image x:Name="MsgSent" Grid.Column="0" Source="/assets/right.png" Stretch="Uniform" Width="20">
                                                 <Image.Style>
-
                                                     <Style TargetType="{x:Type Image}">
                                                         <Setter Property="Visibility" Value="Visible"/>
                                                         <Style.Triggers>
