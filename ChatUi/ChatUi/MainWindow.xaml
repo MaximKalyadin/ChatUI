@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ChatUi"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ChatUi.MainWindow"
         mc:Ignorable="d" x:Name="mainWindow"
-        Title="MainWindow" Height="800" Width="1400" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="800" Width="1400" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Window.Background>
         <ImageBrush ImageSource="assets/AuthorizationWindowBackgroundImage.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -339,6 +339,43 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!--SystemButtonStyleStart-->
+        <Style x:Key="SystemButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
@@ -519,6 +556,21 @@
                     <Run Text="b-r Kievski 13/2 42" FontSize="14"/>
                 </TextBlock>
                 <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+                <Button x:Name="CompressButton" Background="Transparent" BorderBrush="Transparent"
+                    Width="30" Height="30" Margin="0 0 5 0" Style="{DynamicResource SystemButtonStyle}" Click="CompressButton_Click">
+                    <Image x:Name="CompressImage" Source="assets/systembuttons/compress32px.png" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="FitToWidthButton" Background="Transparent" BorderBrush="Transparent"
+                    Width="30" Height="30" Margin="5 0 5 0" Style="{DynamicResource SystemButtonStyle}" Click="FitToWidthButton_Click">
+                    <Image x:Name="FitToWidthImage" Source="assets/systembuttons/fitToWidth_32px.png" Width="26" Height="26"/>
+                </Button>
+                <Button x:Name="CloseButton" Background="Transparent" BorderBrush="Transparent"
+                    Width="30" Height="30" Margin="5 0 0 0" Style="{DynamicResource SystemButtonStyle}" Click="CloseButton_Click">
+                    <Image x:Name="CloseImage" Source="assets/systembuttons/multiply32px.png" Width="32"/>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>
