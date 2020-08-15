@@ -20,6 +20,8 @@ namespace ChatUi
                 {
                 new ChatListItems(){ ContactProfilePic="/assets/profile1.jpg", ContactName="Пример", LastMessageTime="10:30 PM", Availability="Online", IsRead=true, Message="Как дела?", NewMsgCount="1", IsOnline=true},
                 new ChatListItems() { ContactName = "Калядин Максим", LastMessageTime = "14:45 pm", Availability = "Offline", Message = "Пока", ContactProfilePic="/assets/profile1.jpg" },
+                new ChatListItems() {IsChatSelected=true, ContactName = "Лагин Дмитрий", LastMessageTime = "06:18 am", Availability = "Offline", Message = "Как нибудь увидимся", IsRead = false, ContactProfilePic="/assets/profile1.jpg"},
+                new ChatListItems() {IsChatSelected=true, ContactName = "Лагин Дмитрий", LastMessageTime = "06:18 am", Availability = "Offline", Message = "Как нибудь увидимся", IsRead = false, ContactProfilePic="/assets/profile1.jpg"},
                 new ChatListItems() {IsChatSelected=true, ContactName = "Лагин Дмитрий", LastMessageTime = "06:18 am", Availability = "Offline", Message = "Как нибудь увидимся", IsRead = false, ContactProfilePic="/assets/profile1.jpg"}
                 };
             }
