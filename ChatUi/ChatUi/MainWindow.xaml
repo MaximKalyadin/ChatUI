@@ -7,6 +7,9 @@
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ChatUi.MainWindow"
         mc:Ignorable="d" x:Name="mainWindow"
         Title="MainWindow" Height="800" Width="1400" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="assets/AuthorizationWindowBackgroundImage.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
