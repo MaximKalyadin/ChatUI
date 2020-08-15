@@ -8,13 +8,17 @@
     <UserControl.Resources>
         <Style x:Key="ChatListBackgroundStyle" TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="6"/>
-            <Setter Property="Background" Value="Aqua"/>
+            <Setter Property="Background" Value="Snow"/>
             <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Opacity" Value="0.6"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}" Value="True">
+                    <Setter Property="Opacity" Value="1"/>
                     <Setter Property="Background" Value="#2A2E4D"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}" Value="True">
+                    <Setter Property="Opacity" Value="1"/>
+                    <Setter Property="TextBlock.Opacity" Value="1"/>
                     <Setter Property="Background" Value="#2A2E4D"/>
                 </DataTrigger>
             </Style.Triggers>
@@ -86,8 +90,8 @@
                                                         </Style>
                                                     </TextBlock.Style>
                                                 </TextBlock>
-                                                <TextBlock Text="{Binding LastMessageTime}" FontSize="15" HorizontalAlignment="Right" Foreground="#B7B5B8"/>
-                                                <TextBlock Grid.Row="1" Text="{Binding Availability}" FontSize="15" Foreground="#B7B5B8"/>
+                                                <TextBlock Text="{Binding LastMessageTime}" FontSize="15" HorizontalAlignment="Right" Foreground="DimGray"/>
+                                                <TextBlock Grid.Row="1" Text="{Binding Availability}" FontSize="15" Foreground="DimGray"/>
                                             </Grid>
                                         </Grid>
                                         <Grid Margin="28,0,28,0" Width="330">
@@ -136,8 +140,8 @@
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Grid.Style>
-                                                <Ellipse Fill="#F54A4A" Width="25" Height="25"/>
-                                                <TextBlock Text="{Binding NewMsgCount}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                                                <Ellipse Fill="#F54A4A"  Width="25" Height="25"/>
+                                                <TextBlock Text="{Binding NewMsgCount}" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="White"/>
                                             </Grid>
                                         </Grid>
                                     </StackPanel>
