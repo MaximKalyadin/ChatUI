@@ -6,11 +6,7 @@
         xmlns:local="clr-namespace:ChatUi"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ChatUi.MainWindow"
         mc:Ignorable="d" x:Name="mainWindow"
-<<<<<<< HEAD
-        Title="MainWindow" Height="800" Width="1400" WindowStyle="None" BorderBrush="Red" BorderThickness="3" ResizeMode="CanResize" WindowStartupLocation="CenterScreen">
-=======
-        Title="MainWindow" Height="800" Width="1400" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
->>>>>>> 2f0941f6f8d55e86f92eb97fb94ed623bd1edeb2
+        Title="MainWindow" Height="800" Width="1400" BorderBrush="Red" BorderThickness="2" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Window.Background>
         <ImageBrush ImageSource="assets/AuthorizationWindowBackgroundImage.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -388,7 +384,11 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="310"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Opacity="0.8" Background="Snow">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.RowSpan="2" Opacity="0.8" Background="Snow">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
@@ -396,7 +396,7 @@
             <Custom_Controls:RoundProfileButton Width="50"/>
             <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0"/>
         </Grid>
-        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,30,0,30">
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Margin="0,30,0,30">
             <Grid Margin="30,0,30,00">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -457,10 +457,10 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Custom_Controls:ChatList/>
         </StackPanel>
-        <Border Grid.Column="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8">
-            <Grid>
+        <Custom_Controls:ChatList Grid.Column="1" Grid.Row="1"/>
+            <Border Grid.Column="2" Grid.RowSpan="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8">
+                <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="*"/>
@@ -540,12 +540,12 @@
                 </Grid>
             </Grid>
         </Border>
-        <Grid Grid.Column="3">
+        <Grid Grid.Column="3" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image Source="/assets/close.png" Stretch="Uniform" Height="30" HorizontalAlignment="Right" Margin="0,7,22,0"/>
+            <Image Source="/assets/close.png" Stretch="Uniform" Height="30" HorizontalAlignment="Right" Margin="0,40,22,0"/>
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <Custom_Controls:RoundProfileButton Height="160" Width="160" StrokeBrush="WhiteSmoke"/>
                 <TextBlock Margin="0,18,0,0" TextAlignment="Center" Text="Калядин максим" FontWeight="Bold" FontSize="20"/>

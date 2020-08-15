@@ -161,5 +161,5 @@
         </Style>
     </UserControl.Resources>
 
-    <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}"/>
+    <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
 </UserControl>
