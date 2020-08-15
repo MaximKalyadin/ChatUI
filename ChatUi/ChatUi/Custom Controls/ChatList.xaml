@@ -52,7 +52,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Border x:Name="bd" BorderThickness="0" Background="Transparent" SnapsToDevicePixels="True" HorizontalAlignment="Center">
+                        <Border x:Name="bd" BorderBrush="Black" BorderThickness="0.7" CornerRadius="6" Background="Transparent" SnapsToDevicePixels="True" HorizontalAlignment="Center">
                             <Border x:Name="border" SnapsToDevicePixels="True" Style="{StaticResource ChatListBackgroundStyle}">
                                 <Grid>
                                     <Border x:Name="ChatIndicatorRight" CornerRadius="6,0,0,6" Style="{StaticResource ChatIndicatorStyle}"/>
