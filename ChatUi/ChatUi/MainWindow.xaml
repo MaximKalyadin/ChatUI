@@ -340,7 +340,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="447"/>
             <ColumnDefinition Width="*"/>
