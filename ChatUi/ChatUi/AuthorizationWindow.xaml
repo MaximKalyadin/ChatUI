@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ChatUi"
         mc:Ignorable="d"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="AuthorizationWindow" Height="800" Width="1400" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="AuthorizationWindow" BorderBrush="Red" BorderThickness="2" Height="800" Width="1400" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <!--TextBoxStyleStart-->
         <!--TextBoxStyleBorderChanged-->
