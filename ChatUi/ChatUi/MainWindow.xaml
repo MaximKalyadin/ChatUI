@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ChatUi"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ChatUi.MainWindow"
         mc:Ignorable="d" x:Name="mainWindow"
-        Title="MainWindow" Height="800" Width="1400" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="MainWindow" Height="800" Width="1400" BorderBrush="Red" BorderThickness="2" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Window.Background>
         <ImageBrush ImageSource="assets/AuthorizationWindowBackgroundImage.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -379,23 +379,29 @@
     </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95"/>
             <ColumnDefinition Width="447"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="310"/>
         </Grid.ColumnDefinitions>
-        <!--Add2Rows-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--Add2Rows-->
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0,30,0,30">
+        <Grid Grid.Column="0" Grid.RowSpan="2" Opacity="0.8" Background="Snow">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Custom_Controls:RoundProfileButton Width="50"/>
+            <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0"/>
+        </Grid>
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Margin="0,30,0,30">
             <Grid Margin="30,0,30,00">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
-
                 <Border Grid.Column="0" Background="Transparent" Height="Auto" Visibility="{Binding Visbility}">
                     <Border Background="#F8F6F7" Height="48" CornerRadius="25" HorizontalAlignment="Stretch">
                         <Grid Height="Auto">
@@ -409,7 +415,6 @@
                             <TextBlock Text="Enter to search..." Grid.Column="1" FontWeight="SemiBold" 
                                        FontSize="16" HorizontalAlignment="Left" TextAlignment="Left"
                                        VerticalAlignment="Center" Foreground="#B7B5B8" IsHitTestVisible="False">
-
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -432,7 +437,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Sort By:" FontSize="14" FontWeight="SemiBold" Foreground="#B7B5B8"
+                <TextBlock Text="Sort By:" FontSize="14" FontWeight="SemiBold" Foreground="White"
                            HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <ComboBox Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}">
                     <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Latest First"/>
@@ -444,7 +449,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Add new" FontWeight="SemiBold" Margin="0,0,5,0" FontSize="14"
-                               Foreground="#B7B5B8" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                               Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                     <Button Grid.Column="1" Style="{DynamicResource ButtonStyle}">
                         <Button.Content>
                             <Image Source="/assets/plus.png" Stretch="Uniform" Width="15"/>
@@ -453,9 +458,9 @@
                 </Grid>
             </Grid>
         </StackPanel>
-        <Custom_Controls:ChatList Grid.Column="0" Grid.Row="1"/>
-        <Border Grid.Column="1" Grid.RowSpan="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8">
-            <Grid>
+        <Custom_Controls:ChatList Grid.Column="1" Grid.Row="1"/>
+            <Border Grid.Column="2" Grid.RowSpan="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8">
+                <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="*"/>
@@ -471,9 +476,9 @@
                     <TextBlock Grid.Column="1" VerticalAlignment="Center">
                         <Run Text="Калядин Максим" FontWeight="Bold" FontSize="17"/>
                         <LineBreak/>
-                        <Run Text="Offline" FontWeight="ExtraBold" FontSize="15" Foreground="#B7B5B8"/>
+                        <Run Text="Offline" FontWeight="ExtraBold" FontSize="15" Foreground="White"/>
                         <Run Text="     "/>
-                        <Run Text="Last seen 3 hour ago" FontSize="14" Foreground="#B7B5B8"/>
+                        <Run Text="Last seen 3 hour ago" FontSize="14" Foreground="White"/>
                     </TextBlock>
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
@@ -540,7 +545,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image Source="/assets/close.png" Stretch="Uniform" Height="30" HorizontalAlignment="Right" Margin="0,7,22,0"/>
+            <Image Source="/assets/close.png" Stretch="Uniform" Height="30" HorizontalAlignment="Right" Margin="0,40,22,0"/>
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <Custom_Controls:RoundProfileButton Height="160" Width="160" StrokeBrush="WhiteSmoke"/>
                 <TextBlock Margin="0,18,0,0" TextAlignment="Center" Text="Калядин максим" FontWeight="Bold" FontSize="20"/>
