@@ -558,7 +558,7 @@
                 <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Margin="0 5 10 0">
                 <Button x:Name="CompressButton" Background="Transparent" BorderBrush="Transparent"
                     Width="30" Height="30" Margin="0 0 5 0" Style="{DynamicResource SystemButtonStyle}" Click="CompressButton_Click">
                     <Image x:Name="CompressImage" Source="assets/systembuttons/compress32px.png" Width="25" Height="25"/>
