@@ -39,5 +39,15 @@ namespace ChatUi
             mainWindow.Show();
             Close();
         }
+
+        private void CompressButton_Click(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.MinimizeWindow(this);
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.CloseWindow(this);
+        }
     }
 }
