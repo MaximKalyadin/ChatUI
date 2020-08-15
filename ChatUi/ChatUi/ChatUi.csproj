@@ -62,6 +62,9 @@
     <Compile Include="Custom Controls\Conversation.xaml.cs">
       <DependentUpon>Conversation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Custom Controls\MenuListControl.xaml.cs">
+      <DependentUpon>MenuListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel.cs" />
     <Page Include="AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
@@ -72,6 +75,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Custom Controls\Conversation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom Controls\MenuListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

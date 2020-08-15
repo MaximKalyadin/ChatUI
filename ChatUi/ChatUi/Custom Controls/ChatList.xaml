@@ -18,7 +18,6 @@
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}" Value="True">
                     <Setter Property="Opacity" Value="1"/>
-                    <Setter Property="TextBlock.Opacity" Value="1"/>
                     <Setter Property="Background" Value="#2A2E4D"/>
                 </DataTrigger>
             </Style.Triggers>
@@ -162,5 +161,5 @@
         </Style>
     </UserControl.Resources>
 
-    <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+    <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
 </UserControl>
