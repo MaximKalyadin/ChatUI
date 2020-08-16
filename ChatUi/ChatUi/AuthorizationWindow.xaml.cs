@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using ClientToServerApi;
 
 namespace ChatUi
 {
@@ -11,9 +12,11 @@ namespace ChatUi
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
+        private readonly ClientServerAPI clientServerAPI_;
         public AuthorizationWindow()
         {
             InitializeComponent();
+            clientServerAPI_ = ClientServerAPI.GetInstanse();
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
