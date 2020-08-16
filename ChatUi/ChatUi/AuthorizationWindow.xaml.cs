@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ChatUi
 {
@@ -62,20 +51,17 @@ namespace ChatUi
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //код, притянутый за уши
-            var tabControl = sender as TabControl;
-            if(tabControl != null)
+
+            var tabItem = e.AddedItems[0] as TabItem;
+            var doubleAnimationStackPanel = new DoubleAnimation
             {
-                var tabItem = e.AddedItems[0] as TabItem;
-                var doubleAnimationStackPanel = new DoubleAnimation
-                {
-                    From = 0,
-                    To = 300,
-                    Duration = TimeSpan.FromSeconds(0.5),
-                    AccelerationRatio = 1,
-                    FillBehavior = FillBehavior.HoldEnd
-                };
-                (tabItem.Content as StackPanel).BeginAnimation(StackPanel.WidthProperty, doubleAnimationStackPanel);
-            }
+                From = 0,
+                To = 300,
+                Duration = TimeSpan.FromSeconds(0.5),
+                AccelerationRatio = 1,
+                FillBehavior = FillBehavior.HoldEnd
+            };
+            (tabItem.Content as StackPanel).BeginAnimation(StackPanel.WidthProperty, doubleAnimationStackPanel);
         }
     }
 }
