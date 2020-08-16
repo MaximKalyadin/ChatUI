@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChatUi.Custom_Controls"
+             xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
              mc:Ignorable="d" Height="Auto" Width="Auto">
     <UserControl.Resources>
         <Style x:Key="ChatListBackgroundStyle" TargetType="{x:Type Border}">
@@ -21,6 +22,37 @@
                     <Setter Property="Background" Value="#2A2E4D"/>
                 </DataTrigger>
             </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ScrollBarThumbStyle" TargetType="{x:Type Thumb}">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Width" Value="31"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border Background="Snow" CornerRadius="6" Margin="0,0,15,0"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Track Name="PART_Track" Grid.Row="1" 
+                   IsDirectionReversed="True">
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource ScrollBarThumbStyle}">
+                        </Thumb>
+                    </Track.Thumb>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+        <Style TargetType="{x:Type ScrollBar}">
+            <Setter Property="Template" Value="{StaticResource VerticalScrollBar}"/>
         </Style>
 
         <DropShadowEffect x:Key="DropShadow" BlurRadius="10" ShadowDepth="3" Direction="360" Color="#F54A4A"/>
@@ -158,8 +190,10 @@
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Focusable" Value="False"/>
+            <Setter Property="ScrollViewer.Cursor" Value="Hand"/>
         </Style>
     </UserControl.Resources>
-    <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}"
-             ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"/>
+    <ScrollViewer>
+        <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}"/>
+        </ScrollViewer>
 </UserControl>
