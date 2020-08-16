@@ -20,9 +20,12 @@ namespace ChatUi
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool IsFitToWidth { set; get; } 
+
         public MainWindow()
         {
             InitializeComponent();
+            IsFitToWidth = false;
         }
 
         private void CompressButton_Click(object sender, RoutedEventArgs e)
@@ -32,7 +35,18 @@ namespace ChatUi
 
         private void FitToWidthButton_Click(object sender, RoutedEventArgs e)
         {
-            SystemCommands.MaximizeWindow(this);
+            if (!IsFitToWidth)
+            {
+                SystemCommands.MaximizeWindow(this);
+                (this.FitToWidthButton.Content as Image).Source = new BitmapImage(new Uri(@"/ChatUi;component/Assets/SystemButtons/collapse32px.png", UriKind.Relative));
+                IsFitToWidth = true;
+            }
+            else
+            {
+                SystemCommands.RestoreWindow(this);
+                (this.FitToWidthButton.Content as Image).Source = new BitmapImage(new Uri(@"/ChatUi;component/Assets/SystemButtons/fitToWidth_32px.png", UriKind.Relative));
+                IsFitToWidth = false;
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

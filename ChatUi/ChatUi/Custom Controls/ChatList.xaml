@@ -54,7 +54,7 @@
         <Style TargetType="{x:Type ScrollBar}">
             <Setter Property="Template" Value="{StaticResource VerticalScrollBar}"/>
         </Style>
-        
+
         <DropShadowEffect x:Key="DropShadow" BlurRadius="10" ShadowDepth="3" Direction="360" Color="#F54A4A"/>
         <Style x:Key="ChatIndicatorStyle" TargetType="{x:Type Border}">
             <Setter Property="Background" Value="Transparent"/>
@@ -195,5 +195,5 @@
     </UserControl.Resources>
     <ScrollViewer>
         <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}"/>
-    </ScrollViewer>
+        </ScrollViewer>
 </UserControl>

@@ -168,7 +168,9 @@
   <ItemGroup>
     <Resource Include="Assets\AuthorizationWindowBackgroundImage.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\SystemButtons\collapse32px.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\SystemButtons\compress32px.png" />
     <Resource Include="Assets\SystemButtons\fitToWidth_32px.png" />
