@@ -176,5 +176,11 @@
     <Resource Include="Assets\SystemButtons\fitToWidth_32px.png" />
     <Resource Include="Assets\SystemButtons\multiply32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientToServerApi\ClientToServerApi.csproj">
+      <Project>{cfe476c5-b2a5-4c0a-9cb4-7c6f95175a4f}</Project>
+      <Name>ClientToServerApi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
