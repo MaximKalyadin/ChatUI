@@ -1,11 +1,14 @@
 ﻿using ClientToServerApi.Enums;
+using ClientToServerApi.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ClientToServerApi
@@ -53,36 +56,42 @@ namespace ClientToServerApi
             throw new Exception("Не удалось установить соединение с сервером!");
         }
 
-        public async Task<string> SendAsync(Operations operation, object data)
+        public async Task<OperationResultInfo> SendAsync(OperationMessageToServer messageToServer)
         {
             try
             {
-                byte[] binary_data = Encoding.UTF8.GetBytes(data.ToString());
-                await networkStream_.WriteAsync(binary_data, 0, binary_data.Length);
-                return await RecieveAsync();
+                byte[] binary_data = Encoding.UTF8.GetBytes(Enum.GetName(typeof(Operations), messageToServer.Operation) + ":" + messageToServer.Data.ToString());
+                await networkStream_.WriteAsync(binary_data, 0, binary_data.Length).ConfigureAwait(false);
+                return await RecieveAsync().ConfigureAwait(false);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                return ex.Message;
+                throw;
             }
         }
 
-        private async Task<string> RecieveAsync()
+        private async Task<OperationResultInfo> RecieveAsync()
         {
             try
             {
-                byte[] buffer = new byte[64];
+                byte[] buffer = new byte[256];
                 StringBuilder stringBuilder = new StringBuilder();
                 do
                 {
-                    await networkStream_.ReadAsync(buffer, 0, 64);
-                    stringBuilder.Append(Encoding.UTF8.GetString(buffer));
+                    int countBytes = await networkStream_.ReadAsync(buffer, 0, 256).ConfigureAwait(false);
+                    stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, countBytes));
                 } while (networkStream_.DataAvailable);
-                return stringBuilder.ToString();
+                var operationInfo = stringBuilder.ToString().Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+                Debug.WriteLine("Получено сообщение - " + stringBuilder.ToString());
+                return new OperationResultInfo()
+                {
+                    OperationResult = (OperationsResults)Enum.Parse(typeof(OperationsResults), operationInfo[0]),
+                    Info = operationInfo[1]
+                };
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                return ex.Message;
+                throw;
             }
         }
     }

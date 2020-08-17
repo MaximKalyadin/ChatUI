@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ClientToServerApi.Models
 {
-    public class OperationResultInfo
+    public class OperationMessageToServer
     {
-        public OperationsResults OperationResult { get; set; }
-        public string Info { set; get; }
+        public Operations Operation { get; set; }
+        public object Data { get; set; }
     }
 }
