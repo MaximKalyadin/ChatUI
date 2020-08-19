@@ -832,7 +832,7 @@
                                         </StackPanel>
                                         <Button x:Name="EnterButton" Content="Войти" Margin="0 25 0 0" Style="{StaticResource ButtonStyle}" Click="Button_Click"/>
                                         <Button x:Name="ForgetPasswordButton" Content="Забыли пароль?" Margin="0 30 0 0" Style="{StaticResource ButtonStyle}"
-                                                BorderThickness="0 0 0 1" HorizontalContentAlignment="Left" FontSize="16" Padding="5"/>
+                                                BorderThickness="0 0 0 1" HorizontalContentAlignment="Left" FontSize="16" Padding="5" HorizontalAlignment="Right" Width="300"/>
                                     </StackPanel>
                                 </TabItem.Content>
                             </TabItem>
