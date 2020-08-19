@@ -26,6 +26,52 @@ namespace ChatUi
             }
         }
 
+        public List<FriendListItem> FriendListItems
+        {
+            get
+            {
+                return new List<FriendListItem>
+                {
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                };
+            }
+        }
+
+        public List<NotificationListItem> NotificationListItem
+        {
+            get
+            {
+                return new List<NotificationListItem>
+                {
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" },
+                    new NotificationListItem(){ Availability = "Offline", ContactName = "Лагин Дмитрий", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = true, Massege = "Хочет добавить вас в друзья", Time = "10:30 PM" }
+                };
+            }
+        }
 
         public List<ChatListItems> ChatListItems
         {
@@ -65,6 +111,37 @@ namespace ChatUi
         public int ListItemHeight { get; set; }
 
         public bool IsItemSelected { get; set; }
+    }
+
+    public class FriendListItem
+    {
+        public bool IsOnline { get; set; }
+
+        public string ContactProfilePic { get; set; }
+
+        public string ContactName { get; set; }
+
+        public string Availability { get; set; }
+
+        public bool IsRead { get; set; }
+
+    }
+
+    public class NotificationListItem
+    {
+        public bool IsOnline { get; set; }
+
+        public string ContactProfilePic { get; set; }
+
+        public string ContactName { get; set; }
+
+        public string Availability { get; set; }
+
+        public string Massege { get; set; }
+
+        public string Time { get; set; }
+
+        public bool IsRead { get; set; }
     }
 
     public class ChatListItems
