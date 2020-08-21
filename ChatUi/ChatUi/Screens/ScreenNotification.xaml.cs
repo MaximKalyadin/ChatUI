@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ChatUi.Screens
 {
     /// <summary>
-    /// Логика взаимодействия для Window1.xaml
+    /// Логика взаимодействия для ScreenNotification.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class ScreenNotification : UserControl
     {
-        public Window1()
+        public ScreenNotification()
         {
             InitializeComponent();
         }
