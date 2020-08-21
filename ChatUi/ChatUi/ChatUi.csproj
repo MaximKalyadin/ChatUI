@@ -74,8 +74,20 @@
     <Compile Include="Custom Controls\Notifications.xaml.cs">
       <DependentUpon>Notifications.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Screens\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
+    <Compile Include="Screens\ScreenChat.xaml.cs">
+      <DependentUpon>ScreenChat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ScreenFriend.xaml.cs">
+      <DependentUpon>ScreenFriend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ScreenMyProfile.xaml.cs">
+      <DependentUpon>ScreenMyProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ScreenNotification.xaml.cs">
+      <DependentUpon>ScreenNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ScreenSettings.xaml.cs">
+      <DependentUpon>ScreenSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel.cs" />
     <Page Include="AuthorizationWindow.xaml">
@@ -124,7 +136,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Screens\Window1.xaml">
+    <Page Include="Screens\ScreenChat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\ScreenFriend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\ScreenMyProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\ScreenNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\ScreenSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
