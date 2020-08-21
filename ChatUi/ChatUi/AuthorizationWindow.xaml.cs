@@ -18,7 +18,7 @@ namespace ChatUi
         public AuthorizationWindow()
         {
             InitializeComponent();
-            clientServerAPI_ = ClientServerAPI.GetInstanse();
+            //clientServerAPI_ = ClientServerAPI.GetInstanse();
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -32,7 +32,7 @@ namespace ChatUi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
+            /*var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
             var passwordBox = this.TabControl.Template.FindName("PasswordBox", this.TabControl) as PasswordBox;
             if(string.IsNullOrEmpty(loginTextBox.Text))
             {
@@ -62,7 +62,10 @@ namespace ChatUi
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Close();
-            }
+            }*/
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
 
         private void CompressButton_Click(object sender, RoutedEventArgs e)
