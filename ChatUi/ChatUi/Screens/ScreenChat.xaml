@@ -6,6 +6,49 @@
         xmlns:local="clr-namespace:ChatUi.Screens" xmlns:Custom_Controls="clr-namespace:ChatUi.Custom_Controls"
              mc:Ignorable="d" Height="Auto" Width="Auto">
     <UserControl.Resources>
+        <!--ButtonPopupStyleStart-->
+        <Style x:Key="ButtonPopupStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="WhiteSmoke"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="WhiteSmoke" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#ed484e"/>
+                                <Setter Property="FontSize" Value="17"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--ButtonPopupStyleEnd-->
         <Style x:Key="ButtonMore" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
             <Setter Property="Focusable" Value="False"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -150,16 +193,55 @@
                         </Grid.RowDefinitions>
                         <UniformGrid Columns="3" Margin="24,25,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="48" Width="123" RenderTransformOrigin="0.5,0.5">
                             <UniformGrid.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
+                                <TranslateTransform X="50"/>
                             </UniformGrid.RenderTransform>
-                            <Button Style="{StaticResource ButtonMore}">
+                            <Button x:Name="ButtonMore" Style="{StaticResource ButtonMore}" MouseEnter="ButtonMore_MouseEnter">
                                 <Image Stretch="Uniform"  Source="/assets/more.png" Margin="8,7,-3.2,9"  Height="30" Width="30"/>
                             </Button>
+                            <Popup x:Name="PopupMore" StaysOpen="False" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=ButtonMore}" PopupAnimation="Slide">
+                                <Border x:Name="PopupBorder" Background="WhiteSmoke" BorderThickness="1" CornerRadius="10" BorderBrush="Black" MouseLeave="PopupBorder_MouseLeave">
+                                    <StackPanel Orientation="Vertical">
+                                        <Button x:Name="OpenFriendProfileButton" Style="{StaticResource ButtonPopupStyle}" Height="33" Width="230" Margin="5 5 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image x:Name="OpenFriendProfileButtonImage" Source="/assets/popupbuttons/userprofileblack32px.png" Width="30" Height="30"/>
+                                                <TextBlock Margin="15 5 0 0" Text="Открыть профиль друга" Height="30" Background="Transparent" Foreground="{Binding ElementName=OpenFriendProfileButton, Path=Foreground}"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Separator/>
+                                        <Button x:Name="AddFriendToChatButton" Style="{StaticResource ButtonPopupStyle}" Height="33" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image x:Name="AddFriendToChatButtonImage" Source="/assets/popupbuttons/adduserblack32px.png" Margin="4 0 0 0" Width="30" Height="30"/>
+                                                <TextBlock Margin="11 5 0 0" Text="Добавить друга в чат" Height="30" Background="Transparent" Foreground="{Binding ElementName=AddFriendToChatButton, Path=Foreground}"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="RemoveFriendFromChatButton" Style="{StaticResource ButtonPopupStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image x:Name="RemoveFriendFromChatButtonImage" Source="/assets/popupbuttons/removeuserblack32px.png" Margin="2 0 0 0" Width="30" Height="30"/>
+                                                <TextBlock Margin="13 8 0 0" Text="Удалить друга из чата" Height="30" Background="Transparent" Foreground="{Binding ElementName=RemoveFriendFromChatButton, Path=Foreground}"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Separator/>
+                                        <Button x:Name="DeleteChatButton" Style="{StaticResource ButtonPopupStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image x:Name="DeleteChatButtonImage" Source="/assets/popupbuttons/deletechatblack32px.png" Width="30" Height="30"/>
+                                                <TextBlock Margin="15 5 0 0" Text="Удалить чат" Background="Transparent" Height="30" Foreground="{Binding ElementName=DeleteChatButton, Path=Foreground}"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="ClearChatButton" Style="{StaticResource ButtonPopupStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image x:Name="ClearChatButtonImage" Source="/assets/popupbuttons/clearchatblack32px.png" Width="30" Height="30"/>
+                                                <TextBlock Margin="15 5 0 0" Text="Отчистить чат" Background="Transparent" Height="30" Foreground="{Binding ElementName=ClearChatButton, Path=Foreground}"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="CloseChatButton" Style="{StaticResource ButtonPopupStyle}" Height="40" Width="230" Margin="5 0 5 5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image x:Name="CloseChatButtonImage" Source="/assets/popupbuttons/closechatblack32px.png" Width="30" Height="30"/>
+                                                <TextBlock Margin="15 5 0 0" Text="Закрыть чат" Background="Transparent" Height="30" Foreground="{Binding ElementName=CloseChatButton, Path=Foreground}"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </Border>
+                            </Popup>
                         </UniformGrid>
                     </Grid>
                 </Grid>

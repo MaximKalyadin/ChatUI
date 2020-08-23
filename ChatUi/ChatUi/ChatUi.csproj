@@ -235,5 +235,19 @@
   <ItemGroup>
     <Resource Include="Assets\previewPassword32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\PopupButtons\AddUserBlack32px.png" />
+    <Resource Include="Assets\PopupButtons\AddUserWhite32px.png" />
+    <Resource Include="Assets\PopupButtons\ClearChatBlack32px.png" />
+    <Resource Include="Assets\PopupButtons\ClearChatWhite32px.png" />
+    <Resource Include="Assets\PopupButtons\CloseChatBlack32px.png" />
+    <Resource Include="Assets\PopupButtons\CloseChatWhite32px.png" />
+    <Resource Include="Assets\PopupButtons\DeleteChatBlack32px.png" />
+    <Resource Include="Assets\PopupButtons\DeleteChatWhite32px.png" />
+    <Resource Include="Assets\PopupButtons\RemoveUserBlack32px.png" />
+    <Resource Include="Assets\PopupButtons\RemoveUserWhite32px.png" />
+    <Resource Include="Assets\PopupButtons\UserProfileBlack32px.png" />
+    <Resource Include="Assets\PopupButtons\UserProfileWhite32px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
