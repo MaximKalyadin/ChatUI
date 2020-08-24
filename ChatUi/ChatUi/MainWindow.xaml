@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ChatUi"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ChatUi.MainWindow"
         mc:Ignorable="d" x:Name="mainWindow"
-        Title="MainWindow" Height="800" Width="1400" BorderBrush="Red" BorderThickness="2" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="MainWindow" Height="800" Width="1400" BorderBrush="Red" BorderThickness="2" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Loaded="mainWindow_Loaded">
     <Window.Background>
         <ImageBrush ImageSource="assets/AuthorizationWindowBackgroundImage.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -341,7 +341,7 @@
             </Setter>
         </Style>
 
-        
+
 
         <Style x:Key="ButtonStyleFriendBorder" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -420,40 +420,40 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="95"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Grid x:Name="BaseGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Grid.RowSpan="2" Opacity="0.8" Background="Snow">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Custom_Controls:RoundProfileButton Width="50"/>
-            <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0"/>
-        </Grid>
+            <Grid x:Name="ChildGrid" Grid.Column="0" Grid.RowSpan="2" Opacity="0.8" Background="Snow">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Custom_Controls:RoundProfileButton Width="50"/>
+                <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0"/>
+            </Grid>
 
-        <Screens:ScreenFriend Grid.Column="1" Visibility="Collapsed"/>
-        <Screens:ScreenChat Grid.Column="1" Visibility="Visible"/>
-        <Screens:ScreenSettings Grid.Column="1" Visibility="Collapsed"/>
+            <Screens:ScreenFriend x:Name="ScreenFriend" Grid.Column="1" Visibility="Collapsed"/>
+            <Screens:ScreenChat x:Name="ScreenChat" Grid.Column="1" Visibility="Visible"/>
+            <Screens:ScreenSettings x:Name="ScreenSettings" Grid.Column="1" Visibility="Collapsed"/>
 
 
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Margin="0 5 10 0">
-            <Button x:Name="CompressButton" Background="Transparent" BorderBrush="Transparent"
+            <StackPanel x:Name="SystemButtonsStackPanel" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Margin="0 5 10 0">
+                <Button x:Name="CompressButton" Background="Transparent" BorderBrush="Transparent"
                     Width="30" Height="30" Margin="0 0 5 0" Style="{DynamicResource SystemButtonStyle}" Click="CompressButton_Click">
-                <Image x:Name="CompressImage" Source="assets/systembuttons/compress32px.png" Width="25" Height="25"/>
-            </Button>
-            <Button x:Name="FitToWidthButton" Background="Transparent" BorderBrush="Transparent"
+                    <Image x:Name="CompressImage" Source="assets/systembuttons/compress32px.png" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="FitToWidthButton" Background="Transparent" BorderBrush="Transparent"
                     Width="30" Height="30" Margin="5 0 5 0" Style="{DynamicResource SystemButtonStyle}" Click="FitToWidthButton_Click">
-                <Image x:Name="FitToWidthImage" Source="assets/systembuttons/fitToWidth_32px.png" Width="26" Height="26"/>
-            </Button>
-            <Button x:Name="CloseButton" Background="Transparent" BorderBrush="Transparent"
+                    <Image x:Name="FitToWidthImage" Source="assets/systembuttons/fitToWidth_32px.png" Width="26" Height="26"/>
+                </Button>
+                <Button x:Name="CloseButton" Background="Transparent" BorderBrush="Transparent"
                     Width="30" Height="30" Margin="5 0 0 0" Style="{DynamicResource SystemButtonStyle}" Click="CloseButton_Click">
-                <Image x:Name="CloseImage" Source="assets/systembuttons/multiply32px.png" Width="32"/>
-            </Button>
-        </StackPanel>
-    </Grid>
+                    <Image x:Name="CloseImage" Source="assets/systembuttons/multiply32px.png" Width="32"/>
+                </Button>
+            </StackPanel>
+        </Grid>
 </Window>

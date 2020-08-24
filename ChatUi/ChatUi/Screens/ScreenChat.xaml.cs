@@ -23,5 +23,15 @@ namespace ChatUi.Screens
         {
             InitializeComponent();
         }
+
+        private void ButtonMore_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.PopupMore.IsOpen = true;
+        }
+
+        private void PopupBorder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.PopupMore.IsOpen = false;
+        }
     }
 }
