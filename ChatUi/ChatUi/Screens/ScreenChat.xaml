@@ -295,7 +295,7 @@
 
 
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0,30,0,30" Visibility="Visible">
+        <StackPanel x:Name="StackPanelSearch" Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0,30,0,30" Visibility="Visible">
             <Grid Margin="30,0,30,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -364,7 +364,7 @@
         <local:ScreenMyProfile Grid.Column="0" Visibility="Collapsed"/>
 
 
-        <Border Grid.Column="1" Grid.RowSpan="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8" Visibility="Visible">
+        <Border x:Name="BorderSendMassege" Grid.Column="1" Grid.RowSpan="2" BorderThickness=".5,0,.5,0" BorderBrush="#B7B5B8" Visibility="Collapsed">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
@@ -456,32 +456,7 @@
                 </Grid>
             </Grid>
         </Border>
-        <Grid Grid.Column="2" Grid.RowSpan="2" Visibility="Visible">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Button Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Margin="0 35 13 0" Height="25" Width="25">
-                <Image Source="/assets/close.png" Height="20" Width="20"/>
-            </Button>
-            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15 0 15 0">
-                <Custom_Controls:RoundProfileButton Height="160" Width="160" StrokeBrush="WhiteSmoke"/>
-                <TextBlock Margin="0,18,0,0" TextAlignment="Center" Text="Калядин максим" FontWeight="Bold" FontSize="20"/>
-                <TextBlock Margin="0,6,0,0" TextAlignment="Center" Text="Russia, Ulyanovsk" FontSize="17" Foreground="#b7B5B8"/>
-                <TextBlock Margin="0,18,0,0" TextAlignment="Center">
-                    <Run Text="Типа статус" FontSize="14"/>
-                </TextBlock>
-                <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
-                <TextBlock Margin="5,25,0,0" TextAlignment="Left">
-                    <Run Text="Phone:   " Foreground="#B7B5B8" FontSize="14"/>
-                    <Run Text="+7(967) 774 77 60" FontSize="14"/>
-                </TextBlock>
-                <TextBlock Margin="5,10,0,0" TextAlignment="Left">
-                    <Run Text="E-mail:   " Foreground="#B7B5B8" FontSize="14"/>
-                    <Run Text="kalyadin.maksim@mail.ru" FontSize="14"/>
-                </TextBlock>
-                <Separator Width="240" Background="#B7B5B8" Focusable="False" Margin="0,25,0,0"/>
-            </StackPanel>
-        </Grid>
+        
+        <local:ScreenFriendProfile Visibility="Collapsed" Grid.Column="2"/>
     </Grid>
 </UserControl>
