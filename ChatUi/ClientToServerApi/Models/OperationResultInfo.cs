@@ -9,5 +9,6 @@ namespace ClientToServerApi.Models
     {
         public OperationsResults OperationResult { get; set; }
         public string Info { set; get; }
+        public string Data { get; set; }
     }
 }
