@@ -19,9 +19,9 @@ namespace ChatUi
         public AuthorizationWindow()
         {
             InitializeComponent();
-            clientServerService_ = ClientServerService.GetInstanse();
-            clientServerService_.AddListener(ListenerType.RegistrationListener, RegistrationListener);
-            clientServerService_.AddListener(ListenerType.AuthorizationListener, AuthorizationListener);
+            //clientServerService_ = ClientServerService.GetInstanse();
+            //clientServerService_.AddListener(ListenerType.RegistrationListener, RegistrationListener);
+            //clientServerService_.AddListener(ListenerType.AuthorizationListener, AuthorizationListener);
         }
 
         private void RegistrationListener(OperationResultInfo data)
