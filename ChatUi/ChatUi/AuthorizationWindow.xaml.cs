@@ -2,6 +2,7 @@
 using ClientToServerApi.Enums;
 using ClientToServerApi.Models;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,11 +15,54 @@ namespace ChatUi
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
-        private readonly ClientServerAPI clientServerAPI_;
+        private readonly ClientServerService clientServerService_;
         public AuthorizationWindow()
         {
             InitializeComponent();
-            //clientServerAPI_ = ClientServerAPI.GetInstanse();
+            //clientServerService_ = ClientServerService.GetInstanse();
+            //clientServerService_.AddListener(ListenerType.RegistrationListener, RegistrationListener);
+            //clientServerService_.AddListener(ListenerType.AuthorizationListener, AuthorizationListener);
+        }
+
+        private void RegistrationListener(OperationResultInfo data)
+        {
+            this.Dispatcher.InvokeAsync(() =>
+            {
+                if (data.OperationResult == OperationsResults.UnsuccessfullyRegistration)
+                {
+                    var emailTextBox = this.TabControl.Template.FindName("EmailTextBox", this.TabControl) as TextBox;
+                    emailTextBox.Text = string.Empty;
+                    var labelHint = ((emailTextBox.Style.Resources["CueBannerBrush"] as VisualBrush)?.Visual as Label);
+                    labelHint.Content = data.Info;
+                    labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
+                }
+                else if (data.OperationResult == OperationsResults.SuccessfullyRegistration)
+                {
+                    if (this.TabControl.Template.FindName("ConfirmRegistrationTabItem", this.TabControl) is TabItem tabItem)
+                        tabItem.IsSelected = true;
+                }
+            });
+        }
+
+        private void AuthorizationListener(OperationResultInfo data)
+        {
+            this.Dispatcher.InvokeAsync(() =>
+            {
+                var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
+                if (data.OperationResult == OperationsResults.UnsuccessfullyAuthorization)
+                {
+                    loginTextBox.Text = string.Empty;
+                    var labelHint = ((loginTextBox.Style.Resources["CueBannerBrush"] as VisualBrush)?.Visual as Label);
+                    labelHint.Content = data.Info;
+                    labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
+                }
+                else if (data.OperationResult == OperationsResults.SuccessfullyAuthorization)
+                {
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    Close();
+                }
+            });
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -32,7 +76,7 @@ namespace ChatUi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /*var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
+            var loginTextBox = this.TabControl.Template.FindName("LoginTextBox", this.TabControl) as TextBox;
             var passwordBox = this.TabControl.Template.FindName("PasswordBox", this.TabControl) as PasswordBox;
             if(string.IsNullOrEmpty(loginTextBox.Text))
             {
@@ -44,28 +88,11 @@ namespace ChatUi
                 SetNotFillFieldInfo(passwordBox.Style);
                 return;
             }
-            var sendTask = clientServerAPI_.SendAsync(new OperationMessageToServer()
+            clientServerService_.SendAsync(new OperationMessageToServer()
             {
                 Operation = Operations.Authorization,
                 Data = loginTextBox.Text + "," + passwordBox.Password
             });
-            if(sendTask.Result.OperationResult == OperationsResults.UnsuccessfullyAuthorization)
-            {
-                loginTextBox.Text = string.Empty;
-                var labelHint = ((loginTextBox.Style.Resources["CueBannerBrush"] as VisualBrush)?.Visual as Label);
-                labelHint.Content = sendTask.Result.Info;
-                labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
-            }
-            else if(sendTask.Result.OperationResult == OperationsResults.SuccessfullyAuthorization)
-            {
-
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Close();
-            }*/
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
         }
 
         private void CompressButton_Click(object sender, RoutedEventArgs e)
@@ -75,6 +102,7 @@ namespace ChatUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ClientServerService.ShutdownReceiving();
             SystemCommands.CloseWindow(this);
         }
 
@@ -113,24 +141,11 @@ namespace ChatUi
                 labelHint.Content = "Неправильный пароль, попробуйте снова";
                 return;
             }
-
-            var taskSend = clientServerAPI_.SendAsync(new OperationMessageToServer()
+            clientServerService_.SendAsync(new OperationMessageToServer()
             {
                 Operation = Operations.Registration,
                 Data = emailTextBox.Text + "," + nameTextBox.Text + "," + secondNameTextBox.Text + "," + passwordRegistrationBox.Password
             });
-            if (taskSend.Result.OperationResult == OperationsResults.UnsuccessfullyRegistration)
-            {
-                emailTextBox.Text = string.Empty;
-                var labelHint = ((emailTextBox.Style.Resources["CueBannerBrush"] as VisualBrush)?.Visual as Label);
-                labelHint.Content = taskSend.Result.Info;
-                labelHint.Foreground = new SolidColorBrush(Color.FromRgb(102, 0, 20));
-            }
-            else if (taskSend.Result.OperationResult == OperationsResults.SuccessfullyRegistration)
-            {
-                if (this.TabControl.Template.FindName("ConfirmRegistrationTabItem", this.TabControl) is TabItem tabItem)
-                    tabItem.IsSelected = true;
-            }
         }
 
         private void SetNotFillFieldInfo(Style ControlStyle)

@@ -9,5 +9,7 @@ namespace ClientToServerApi.Models
     {
         public Operations Operation { get; set; }
         public object Data { get; set; }
+
+        public override string ToString() => Enum.GetName(typeof(Operations), Operation) + ":" + Data.ToString();
     }
 }

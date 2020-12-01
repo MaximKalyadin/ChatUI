@@ -435,10 +435,10 @@
                 <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0"/>
             </Grid>
 
-            <Screens:ScreenFriend x:Name="ScreenFriend" Grid.Column="1" Visibility="Collapsed"/>
-            <Screens:ScreenChat x:Name="ScreenChat" Grid.Column="1" Visibility="Visible"/>
+            <Screens:ScreenFriend x:Name="ScreenFriend" Grid.Column="1" Visibility="Visible"/>
+            <Screens:ScreenChat x:Name="ScreenChat" Grid.Column="1" Visibility="Collapsed"/>
             <Screens:ScreenSettings x:Name="ScreenSettings" Grid.Column="1" Visibility="Collapsed"/>
-
+            
 
 
             <StackPanel x:Name="SystemButtonsStackPanel" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Margin="0 5 10 0">
