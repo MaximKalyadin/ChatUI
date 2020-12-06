@@ -8,12 +8,12 @@
     <UserControl.Resources>
         
     </UserControl.Resources>
-    <Grid Grid.Column="2" Grid.RowSpan="2" Visibility="Visible">
+    <Grid x:Name="ProfileFriend" Grid.Column="2" Grid.RowSpan="2" Visibility="Visible">
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Margin="0 35 13 0" Height="25" Width="25">
+        <Button Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Margin="0 35 13 0" Height="25" Width="25" Click="CloseProfileFriend_Click">
             <Image Source="/assets/close.png" Height="20" Width="20"/>
         </Button>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15 0 15 0">

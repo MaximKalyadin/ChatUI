@@ -431,13 +431,13 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Custom_Controls:RoundProfileButton Width="50"/>
-            <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0"/>
+            <Custom_Controls:RoundProfileButton  Width="50" ProfileImageSource="/assets/profile1.jpg" MouseDown="RoundProfileButton_MouseDown"/>
+            <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0" x:Name="Menu" ListBoxSelectedIndex="Menu_ListBoxSelectedIndex"/>
         </Grid>
 
-        <Screens:ScreenFriend Grid.Column="1" Visibility="Collapsed"/>
-        <Screens:ScreenChat Grid.Column="1" Visibility="Visible"/>
-        <Screens:ScreenSettings Grid.Column="1" Visibility="Collapsed"/>
+        <Screens:ScreenFriend x:Name="Friend" Grid.Column="1" Visibility="Collapsed"/>
+        <Screens:ScreenChat x:Name="Chat" Grid.Column="1" Visibility="Collapsed"/>
+        <Screens:ScreenSettings x:Name="Settings" Grid.Column="1" Visibility="Collapsed"/>
 
 
 

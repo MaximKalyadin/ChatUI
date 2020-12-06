@@ -7,7 +7,6 @@
              mc:Ignorable="d" Height="Auto" Width="Auto">
     <UserControl.Resources>
         <Style x:Key="ButtonStyleFriendBorder" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="#2A2E4D"/>
             <Setter Property="BorderBrush" Value="WhiteSmoke"/>
             <Setter Property="Foreground" Value="WhiteSmoke"/>
@@ -57,7 +56,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Custom_Controls:RoundProfileButton Height="250" Width="250" StrokeBrush="WhiteSmoke" Margin="20 20 0 10" Grid.Row="0" IsOnline="True"/>
+            <Custom_Controls:RoundProfileButton Height="250" Width="250" StrokeBrush="WhiteSmoke" Margin="20 20 0 10" Grid.Row="0" IsOnline="True" ProfileImageSource="/assets/profile1.jpg"/>
             <Grid Grid.Row="1">
                 <Button x:Name="ChangePhoto" Content="Сменить фото" Margin="30 0 0 0" Style="{StaticResource ButtonStyleFriendBorder}" Width="300" Height="40" VerticalAlignment="Top"/>
                 <Border BorderBrush="Black" BorderThickness="0.7" CornerRadius="4" Opacity="0.9" Width="300" Height="270" Margin="30 50 0 0" Background="Snow">
@@ -96,89 +95,77 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <Border x:Name="PublicInfo" BorderBrush="Black" BorderThickness="0.7" CornerRadius="4" Opacity="0.9" Width="700" Height="252" Margin="0 100 0 0" Background="Snow" VerticalAlignment="Top">
+            <Border x:Name="PublicInfo" BorderBrush="Black" BorderThickness="0.7" CornerRadius="4" Opacity="0.9" Width="500" Height="210" Margin="0 100 0 0" Background="Snow" VerticalAlignment="Top">
                 <StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Имя: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="NameTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
-                        <Button x:Name="ChangeNameButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Фамилия: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="SurnameTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
-                        <Button x:Name="ChangeSurnameButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Пол: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <ComboBox Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}" BorderThickness="1.2" Width="220" Margin="0 5 0 0">
                             <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Мужской"/>
                             <ComboBoxItem Background="Transparent" BorderThickness="0" Content="Женский"/>
                         </ComboBox>
-                        <Button x:Name="ChangeGenderButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Страна: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="CuntryTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
-                        <Button x:Name="ChangeCuntryButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Город: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="TownTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
-                        <Button x:Name="ChangeTownButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                 </StackPanel>
             </Border>
-            <Border x:Name="PrivateInfo" BorderBrush="Black" BorderThickness="0.7" CornerRadius="4" Opacity="0.9" Width="700" Height="222" Margin="0 0 0 200" Background="Snow" VerticalAlignment="Bottom">
+            <Border x:Name="PrivateInfo" BorderBrush="Black" BorderThickness="0.7" CornerRadius="4" Opacity="0.9" Width="500" Height="250" Margin="0 0 0 200" Background="Snow" VerticalAlignment="Bottom">
                 <StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="E-mail: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="EmailTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
-                        <Button x:Name="ChangeEmailButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
 
@@ -186,7 +173,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Старый пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <PasswordBox x:Name="OldPasswordTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
@@ -197,7 +183,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Новый пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <PasswordBox x:Name="NewPasswordTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
@@ -208,29 +193,31 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Повторите пароль: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <PasswordBox x:Name="RepeatPasswordTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" BorderThickness="1.2" Background="Transparent" />
-
-                        <Button x:Name="ChangePasswordButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Phone: " Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
                         <TextBox x:Name="PhoneTextBox" Width="220" Grid.Column="1" Margin="0 5 0 0"
                                      FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                      TextAlignment="Left" BorderThickness="1.2" Background="Transparent" />
-
-                        <Button x:Name="ChangePhoneButton" Content="Сменить" Margin="0 5 10 0" Grid.Column="2" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
                     </Grid>
                     <Separator Background="#B7B5B8" Focusable="False" Margin="0 5 0 0"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Сохранить изменения ?" Margin="15 10 15 2" TextAlignment="Left" Foreground="#B7B5B8" FontSize="18" Grid.Column="0"/>
+                        <Button x:Name="ChangeGenderButton" Content="Сохранить" Margin="0 5 28 0" Grid.Column="1" Style="{StaticResource ButtonStyleFriendBorder}" Width="150" HorizontalAlignment="Right" />
+                    </Grid>
                 </StackPanel>
             </Border>
         </Grid>

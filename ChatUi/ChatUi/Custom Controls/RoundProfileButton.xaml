@@ -7,7 +7,7 @@
              x:Name="_profileButton"
              mc:Ignorable="d" Height="50" Width="50">
     <UserControl.Resources>
-        <BitmapImage x:Key="DefaultImage" UriSource="/assets/profile1.jpg"/>
+        <Image Source="/Assets/profile1.jpg" x:Key="DefaultImage"/>
 
         <Style x:Key="AvailabilityStyle" TargetType="{x:Type Ellipse}">
             <Setter Property="StrokeThickness" Value="4"/>
@@ -24,7 +24,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Viewbox Stretch="Fill">
+    <Viewbox Stretch="Fill" x:Name="ViewBoxProfileIcon">
         <Button>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">

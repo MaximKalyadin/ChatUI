@@ -17,7 +17,7 @@
             <Image Source="/assets/close.png" Height="20" Width="20"/>
         </Button>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15 0 15 0">
-            <Custom_Controls:RoundProfileButton Height="200" Width="200" StrokeBrush="WhiteSmoke"/>
+            <Custom_Controls:RoundProfileButton Height="200" Width="200" StrokeBrush="WhiteSmoke" ProfileImageSource="/assets/profile1.jpg"/>
             <TextBlock Margin="0,18,0,0" TextAlignment="Center" Text="Калядин Максим" FontWeight="Bold" FontSize="20"/>
             <TextBlock Margin="0,6,0,0" TextAlignment="Center" Text="Russia, Ulyanovsk" FontSize="17" Foreground="Black"/>
             <TextBlock Margin="0,18,0,0" TextAlignment="Center">

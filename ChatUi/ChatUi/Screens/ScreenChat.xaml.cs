@@ -23,5 +23,35 @@ namespace ChatUi.Screens
         {
             InitializeComponent();
         }
+
+        private void ButtonMore_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.PopupMore.IsOpen = true;
+        }
+
+        private void PopupBorder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.PopupMore.IsOpen = false;
+        }
+
+        private void OpenProfileFriend_Click(object sender, RoutedEventArgs e)
+        {
+            FriendProfile.Visibility = Visibility.Visible;
+            FriendProfile.ProfileFriend.Visibility = Visibility.Visible;
+        }
+
+        public void LiatBoxChat_ListBoxSelectionChange(object sender, EventArgs e)
+        {
+            if (ChatList.SelectedIndex >= 0)
+            {
+                BorderSendMassege.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void CloseChat_Click(object sender, RoutedEventArgs e)
+        {
+            BorderSendMassege.Visibility = Visibility.Collapsed;
+        }
+
     }
 }

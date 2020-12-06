@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ChatUi.Screens;
 
 namespace ChatUi.Screens
 {
@@ -22,6 +23,11 @@ namespace ChatUi.Screens
         public ScreenFriendProfile()
         {
             InitializeComponent();
+        }
+
+        private void CloseProfileFriend_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileFriend.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -74,5 +74,5 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <ListBox Style="{StaticResource ChatListBox}" ItemsSource="{Binding ItemList}"/>
+    <ListBox Style="{StaticResource ChatListBox}" ItemsSource="{Binding ItemList}" x:Name="ListBoxMenu" />
 </UserControl>
