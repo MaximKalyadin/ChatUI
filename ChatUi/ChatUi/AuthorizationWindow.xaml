@@ -20,7 +20,7 @@
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                     <VisualBrush.Visual>
-                        <Label Content="Логин (Email)" Foreground="WhiteSmoke" FontSize="16"/>
+                        <Label x:Name="LabelHintLogin" Content="Логин (Email)" Foreground="WhiteSmoke" FontSize="16"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Style.Resources>
@@ -78,6 +78,69 @@
             </Style.Triggers>
         </Style>
         <!--TextBoxStyleEnd-->
+        <!--TextBoxRegistrationStyleStart-->
+        <Style x:Key="EmailTextBoxRegistrationStyle" TargetType="{x:Type TextBox}">
+            <!--StyleResourcesForHint-->
+            <Style.Resources>
+                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                    <VisualBrush.Visual>
+                        <Label Content="Логин (Email)" Foreground="WhiteSmoke" FontSize="16"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Style.Resources>
+            <!--StyleResourcesForHint-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <StackPanel>
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                <Line X1="0" Y1="1" X2="300" Y2="1" Width="300" Stroke="WhiteSmoke" Height="1"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+                <Trigger Property="Text" Value="{x:Null}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <!--TextBoxCodeConfirmStyleStart-->
         <Style x:Key="TextBoxCodeConfirmStyle" TargetType="{x:Type TextBox}">
             <!--StyleResourcesForHint-->
@@ -694,7 +757,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="WhiteSmoke" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -707,8 +770,8 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="WhiteSmoke"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
@@ -761,8 +824,22 @@
                                 </TabItem.Triggers>
                                 <TabItem.Content>
                                     <StackPanel x:Name="TabItemStackPanel" Margin="30 0">
-                                        <TextBox x:Name="LoginTextBox" Margin="0 60 0 0" Height="30" Style="{DynamicResource TextBoxStyle}" />
-                                        <PasswordBox x:Name="PasswordBox" Margin="0 40 0 0" Height="30" Style="{DynamicResource PasswordBoxStyle}" PasswordChanged="PasswordBox_PasswordChanged"/>
+                                        <TextBox x:Name="LoginTextBox" Margin="0 60 0 0" Height="30" Style="{StaticResource TextBoxStyle}" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button x:Name="ShowPasswordButton" Grid.Column="2" Height="33" Width="33"
+                                                    Margin="0 35 1 1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{DynamicResource ShowPasswordButtonStyle}"
+                                                    MouseEnter="ShowPasswordButton_MouseEnter" MouseLeave="ShowPasswordButton_MouseLeave">
+                                                <Image Source="Assets/previewPassword32px.png" Width="30" Height="30"/>
+                                            </Button>
+                                            <TextBox Grid.ColumnSpan="2" x:Name="PasswordTextBox" Margin="0 40 0 0" Height="30" Width="266" 
+                                                     Style="{DynamicResource EmailTextBoxRegistrationStyle}" Visibility="Collapsed" HorizontalAlignment="Left"/>
+                                            <PasswordBox Grid.ColumnSpan="2" x:Name="PasswordBox" Width="266" Margin="0 40 0 0" Height="30"
+                                                         Style="{DynamicResource PasswordBoxStyle}" HorizontalAlignment="Left" PasswordChanged="PasswordBox_PasswordChanged"/>
+                                        </Grid>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 15 0 0">
                                             <CheckBox VerticalAlignment="Center" Style="{StaticResource CheckBoxStyle}"/>
                                             <Label Content="Запомнить пароль" FontSize="14" Foreground="WhiteSmoke" Margin="10 0 0 0"/>
@@ -778,13 +855,40 @@
                                     <TextBlock HorizontalAlignment="Center" Text="Регистрация" />
                                 </TabItem.Header>
                                 <TabItem.Content>
-                                    <StackPanel Margin="30 0">
-                                        <TextBox x:Name="EmailTextBox" Margin="0 30 0 0" Height="30" Style="{DynamicResource TextBoxStyle}" />
+                                    <StackPanel Grid.ColumnSpan="2" Margin="30 0">
+                                        <TextBox x:Name="EmailTextBox" Margin="0 30 0 0" Height="30" Style="{DynamicResource EmailTextBoxRegistrationStyle}"/>
                                         <TextBox x:Name="NameTextBox" Margin="0 20 0 0" Height="30" Style="{DynamicResource TextBoxNameStyle}" />
                                         <TextBox x:Name="SecondNameTextBox" Margin="0 20 0 0" Height="30" Style="{DynamicResource TextBoxSecondNameStyle}" />
-                                        <PasswordBox x:Name="PasswordRegistrationBox" Margin="0 20 0 0" Height="30" Style="{DynamicResource PasswordBoxStyle}" PasswordChanged="PasswordBox_PasswordChanged"/>
-                                        <PasswordBox x:Name="PasswordConfirmRegistrationBox" Margin="0 20 0 0" Height="30" Style="{DynamicResource PasswordBoxConfirmStyle}" PasswordChanged="PasswordBox_PasswordChanged"/>
-                                        <Button x:Name="RegistrationNextButton" Content="Далее" Margin="0 50 0 0" Style="{StaticResource ButtonStyle}" Click="RegistrationNextButton_Click"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button x:Name="ShowRegistrationPasswordButton" Grid.Column="2" Height="33" Width="33"
+                                                    Margin="0 14 1 1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{DynamicResource ShowPasswordButtonStyle}"
+                                                    MouseEnter="ShowRegistrationPasswordButton_MouseEnter" MouseLeave="ShowRegistrationPasswordButton_MouseLeave">
+                                                <Image Source="Assets/previewPassword32px.png" Width="30" Height="30"/>
+                                            </Button>
+                                            <TextBox Grid.ColumnSpan="2" x:Name="PasswordRegistrationTextBox" Margin="0 20 0 0" Height="30" Width="266" 
+                                                     Style="{DynamicResource EmailTextBoxRegistrationStyle}" Visibility="Collapsed" HorizontalAlignment="Left"/>
+                                            <PasswordBox Grid.ColumnSpan="2" x:Name="PasswordRegistrationBox" Width="266" Margin="0 20 0 0" Height="30"
+                                                         Style="{DynamicResource PasswordBoxStyle}" HorizontalAlignment="Left" PasswordChanged="PasswordBox_PasswordChanged"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button x:Name="ShowRegistrationConfirmPasswordButton" Grid.Column="2"  Height="33" Width="33" Margin="0 14 1 1" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{DynamicResource ShowPasswordButtonStyle}" MouseEnter="ShowRegistrationConfirmPasswordButton_MouseEnter" MouseLeave="ShowRegistrationConfirmPasswordButton_MouseLeave">
+                                                <Image Source="Assets/previewPassword32px.png" Width="30" Height="30"/>
+                                            </Button>
+                                            <TextBox Grid.Column="1"  x:Name="PasswordRegistrationConfirmTextBox" Margin="0 20 0 0" Height="30" Width="266"
+                                                     Style="{DynamicResource EmailTextBoxRegistrationStyle}" Visibility="Collapsed" HorizontalAlignment="Left"/>
+                                            <PasswordBox Grid.ColumnSpan="2" x:Name="PasswordConfirmRegistrationBox" Width="266" Margin="0 20 0 0" Height="30"
+                                                         Style="{DynamicResource PasswordBoxConfirmStyle}" HorizontalAlignment="Left" PasswordChanged="PasswordBox_PasswordChanged"/>
+                                        </Grid>
+                                       <Button x:Name="RegistrationNextButton" Content="Далее" Margin="0 50 0 0" Style="{StaticResource ButtonStyle}" Click="RegistrationNextButton_Click"/>
                                     </StackPanel>
                                 </TabItem.Content>
                             </TabItem>
@@ -804,6 +908,42 @@
                 </Border>
             </Grid>
         </ControlTemplate>
+        <!--ShowPasswordButtonStyleStart-->
+        <Style x:Key="ShowPasswordButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!--SystemButtonStyleStart-->
         <Style x:Key="SystemButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -828,7 +968,7 @@
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.5"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>

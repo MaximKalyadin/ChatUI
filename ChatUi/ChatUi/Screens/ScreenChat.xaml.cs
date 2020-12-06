@@ -52,6 +52,5 @@ namespace ChatUi.Screens
         {
             BorderSendMassege.Visibility = Visibility.Collapsed;
         }
-
     }
 }

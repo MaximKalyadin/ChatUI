@@ -398,7 +398,9 @@
                             <Popup x:Name="PopupMore" StaysOpen="False" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=ButtonMore}" PopupAnimation="Slide">
                                 <Border x:Name="PopupBorder" Background="WhiteSmoke" BorderThickness="1" CornerRadius="10" BorderBrush="Black" MouseLeave="PopupBorder_MouseLeave">
                                     <StackPanel Orientation="Vertical">
+
                                         <Button x:Name="OpenFriendProfileButton" Style="{StaticResource PopupButtonUserProfileStyle}" Height="33" Width="230" Margin="5 5 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="OpenProfileFriend_Click"/>
+
                                         <Separator/>
                                         <Button x:Name="AddFriendToChatButton" Style="{StaticResource PopupButtonAddFriendToChatStyle}" Height="33" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
                                         <Button x:Name="RemoveFriendFromChatButton" Style="{StaticResource PopupButtonRemoveFriendFromChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
@@ -406,6 +408,7 @@
                                         <Button x:Name="DeleteChatButton" Style="{StaticResource PopupButtonDeleteChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
                                         <Button x:Name="ClearChatButton" Style="{StaticResource PopupButtonClearChatStyle}" Height="40" Width="230" Margin="5 0 5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
                                         <Button x:Name="CloseChatButton" Style="{StaticResource PopupButtonCloseChatStyle}" Height="40" Width="230" Margin="5 0 5 5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Click="CloseChat_Click"/>
+
                                     </StackPanel>
                                 </Border>
                             </Popup>
