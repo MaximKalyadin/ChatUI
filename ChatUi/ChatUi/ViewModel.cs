@@ -30,22 +30,7 @@ namespace ChatUi
             {
                 return new List<FriendListItem>
                 {
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
-                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false},
+                    new FriendListItem(){ContactName = "Калядин Максим", Availability = "Offline", ContactProfilePic="/assets/profile1.jpg", IsOnline = true, IsRead = false}
                 };
             }
         }

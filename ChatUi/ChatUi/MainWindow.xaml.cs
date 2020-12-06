@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -278,9 +279,69 @@ namespace ChatUi
             SystemCommands.CloseWindow(this);
         }
 
-        private void mainWindow_Loaded(object sender, RoutedEventArgs e)
+        public void Mouse_Click(object sender, RoutedEventArgs e)
         {
-            //DoAnimation();
+            Friend.Visibility = Visibility.Collapsed;
+            Settings.Visibility = Visibility.Collapsed;
+            Chat.Visibility = Visibility.Visible;
+            Chat.StackPanelSearch.Visibility = Visibility.Visible;
+            Chat.ChatList.Visibility = Visibility.Collapsed;
+            Chat.Notification.Visibility = Visibility.Collapsed;
+            Chat.MyProfile.Visibility = Visibility.Visible;
+        }
+
+        public void Menu_ListBoxSelectedIndex(object sender, EventArgs e)
+        {
+            switch (Menu.SelectedIndex)
+            {
+                case 0:
+                    Friend.Visibility = Visibility.Collapsed;
+                    Settings.Visibility = Visibility.Collapsed;
+                    Chat.Visibility = Visibility.Visible;
+                    Chat.StackPanelSearch.Visibility = Visibility.Visible;
+                    Chat.ChatList.Visibility = Visibility.Visible;
+                    Chat.Notification.Visibility = Visibility.Collapsed;
+                    Chat.MyProfile.Visibility = Visibility.Collapsed;
+                    break;
+                case 1:
+                    Friend.Visibility = Visibility.Visible;
+                    Settings.Visibility = Visibility.Collapsed;
+                    Chat.Visibility = Visibility.Collapsed;
+                    Chat.StackPanelSearch.Visibility = Visibility.Collapsed;
+                    Chat.ChatList.Visibility = Visibility.Collapsed;
+                    Chat.Notification.Visibility = Visibility.Collapsed;
+                    Chat.MyProfile.Visibility = Visibility.Collapsed;
+                    break;
+                case 2:
+                    Friend.Visibility = Visibility.Collapsed;
+                    Settings.Visibility = Visibility.Collapsed;
+                    Chat.Visibility = Visibility.Visible;
+                    Chat.StackPanelSearch.Visibility = Visibility.Collapsed;
+                    Chat.ChatList.Visibility = Visibility.Collapsed;
+                    Chat.Notification.Visibility = Visibility.Visible;
+                    Chat.MyProfile.Visibility = Visibility.Collapsed;
+                    break;
+                case 3:
+                    Friend.Visibility = Visibility.Collapsed;
+                    Settings.Visibility = Visibility.Visible;
+                    Chat.Visibility = Visibility.Collapsed;
+                    Chat.StackPanelSearch.Visibility = Visibility.Collapsed;
+                    Chat.ChatList.Visibility = Visibility.Collapsed;
+                    Chat.Notification.Visibility = Visibility.Collapsed;
+                    Chat.MyProfile.Visibility = Visibility.Collapsed;
+                    break;
+            }
+        }
+
+        private void RoundProfileButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Friend.Visibility = Visibility.Collapsed;
+            Settings.Visibility = Visibility.Collapsed;
+            Chat.Visibility = Visibility.Visible;
+            Chat.StackPanelSearch.Visibility = Visibility.Visible;
+            Chat.ChatList.Visibility = Visibility.Collapsed;
+            Chat.Notification.Visibility = Visibility.Collapsed;
+            Chat.MyProfile.Visibility = Visibility.Visible;
         }
     }
 }

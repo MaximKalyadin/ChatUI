@@ -420,20 +420,24 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid x:Name="BaseGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="95"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Grid x:Name="ChildGrid" Grid.Column="0" Grid.RowSpan="2" Opacity="0.8" Background="Snow">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Custom_Controls:RoundProfileButton Width="50"/>
-                <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0"/>
-            </Grid>
+        <Grid Grid.Column="0" Grid.RowSpan="2" Opacity="0.8" Background="Snow">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Custom_Controls:RoundProfileButton  Width="50" ProfileImageSource="/assets/profile1.jpg" MouseDown="RoundProfileButton_MouseDown"/>
+            <Custom_Controls:MenuListControl Grid.Row="1" Margin="0,30,0,0" x:Name="Menu" ListBoxSelectedIndex="Menu_ListBoxSelectedIndex"/>
+        </Grid>
+
+        <Screens:ScreenFriend x:Name="Friend" Grid.Column="1" Visibility="Collapsed"/>
+        <Screens:ScreenChat x:Name="Chat" Grid.Column="1" Visibility="Collapsed"/>
+        <Screens:ScreenSettings x:Name="Settings" Grid.Column="1" Visibility="Collapsed"/>
 
             <Screens:ScreenFriend x:Name="ScreenFriend" Grid.Column="1" Visibility="Visible"/>
             <Screens:ScreenChat x:Name="ScreenChat" Grid.Column="1" Visibility="Collapsed"/>
